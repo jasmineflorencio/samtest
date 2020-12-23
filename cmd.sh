@@ -1,0 +1,3 @@
+#SAM build and deploy
+bucket="`echo gitsamproj | tr 'A-Z' 'a-z'`"
+sam build && sam deploy --stack-name "gitsamproj" --parameter-overrides "ParameterKey=project_name,ParameterValue=gitsamproj,ParameterKey=aws_region,ParameterValue=us-east-1,ParameterKey=function_name,ParameterValue=lambfun" --s3-bucket "bucket-$bucket" --s3-prefix "gitsamproj" --region "us-east-1" --capabilities "CAPABILITY_IAM" --no-confirm-changeset
